@@ -1,0 +1,23 @@
+lenguage: node_js
+cache:
+  directories:
+    - node_modules
+    - ~/.npm
+node_js:
+  - '12'
+git:
+  depth: 3
+script:
+  - yarn build
+deploy:
+  provider: pages
+  skip_cleanup: true
+  keep_history: true
+  github_token: $GITHUB_TOKEN
+  #la carpeta donde se ha generado el build
+  local_dir: dist/
+  #rama que se va crear en github para publicar
+  target_branch: gh-page
+  commit_message: 'Deploy del proyecto'
+  on:
+    branch: master
